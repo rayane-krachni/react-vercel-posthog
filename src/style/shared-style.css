@@ -1,0 +1,23 @@
+.box-shadow-style {
+    border-radius: 10px;
+    width: max-content;
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex-direction: row; /* Ensures child items stack vertically, if needed */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 16px; /* Optional: Adds inner padding for content spacing */
+    background-color: white; /* Optional: Sets background color for shadow contrast */
+}
+.global-div{
+    display:  flex ;
+    flex-direction:  column ;
+    justify-content:  center ; 
+    align-items:  center ;
+    background:  white ; 
+    width:  100% ; 
+    font-family: 'Mukta';
+    max-width:  1500px ; 
+    margin:  0 auto ; 
+    padding:  0rem  
+}

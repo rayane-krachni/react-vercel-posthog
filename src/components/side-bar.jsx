@@ -156,47 +156,70 @@ export default function DashboardLayoutBasic() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', height:"100vh", }}>
-        <Grid2 container>
-          <Grid2 item xs={4}>
-            <Box
+    <Box sx={{ display: 'flex',flex:"row", height: "100vh", width: "100%" }}>
+     
+        
+        {/* Sidebar */}
+        <Box  sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box
             sx={{
-              width:openSideBar ? '350px' : "50px",
+              width: openSideBar ? '330px' : "50px",
               padding: '5px',
-              height:"100%",
+              height: "100%",
               backgroundColor: 'primary.main',
               color: 'white',
               position: 'relative',
-              overflowY: 'auto'
+              overflowY: 'auto',
+              zIndex:"99999"
             }}
           >
-            <Grid2 container sx={{justifyContent:"space-between",alignContent:"center" , textAlign:"center",alignItems:"center"}}>
-              {openSideBar && <Grid2 item xs={10} >
-                <img src={Logo} alt="Logo" />
-              </Grid2>}
-              <Grid2 item xs={2} >
-                <IconButton onClick={()=>{setOpenSideBar(!openSideBar)}}>
-                  {!openSideBar ?<GiHamburgerMenu color='white' style={{ margin:"5px"}}/>:<IoIosCloseCircle color='white' />}  
+            <Grid2 container sx={{ justifyContent: "space-between", alignItems: "center", textAlign: "center" }}>
+              {openSideBar && (
+                <Grid2 item xs={10}>
+                  <img src={Logo} alt="Logo" />
+                </Grid2>
+              )}
+              <Grid2 item xs={2}>
+                <IconButton onClick={() => { setOpenSideBar(!openSideBar) }}>
+                  {!openSideBar ? <GiHamburgerMenu color='white' style={{ margin: "5px" }} /> : <IoIosCloseCircle color='white' />}
                 </IconButton>
               </Grid2>
             </Grid2>
-            {openSideBar && <List>
-              {renderMenuItems(NAVIGATION)}
-            </List>}
-            </Box>
-          </Grid2>
-          <Grid2 item xs={8}>
-            <Box>
-             {CONTENT[content]}
-            </Box>
-          </Grid2>
+            {openSideBar && (
+              <List>
+                {renderMenuItems(NAVIGATION)}
+              </List>
+            )}
+          </Box>
+        </Box>
+  
+        {/* Content Area */}
+        <Box 
+          item 
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"  // Vertical centering within available height
+              }}
+            >
+          <Box 
+            sx={{
+              display: "flex", 
+              flexDirection: "column",
+              alignItems: "center",  // Horizontal centering of content within Box
+              justifyContent: "center",  // Vertical centering within Box
+              width: "100%"  // Makes Box take up full width of Grid2
+            }}
+          >
+            {CONTENT[content]}
+          </Box>
+        </Box>
 
-        </Grid2>
-   
-
-   
-      
-      </Box>
-    </ThemeProvider>
+  
+     
+    </Box>
+  </ThemeProvider>
+  
   );
 }
